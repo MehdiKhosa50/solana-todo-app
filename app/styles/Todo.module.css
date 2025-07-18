@@ -1,0 +1,429 @@
+.todoSection {
+    background: var(--secondary-color);
+    border-radius: var(--br-2xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+    transition: all var(--transition-normal);
+    animation: fadeIn 0.6s ease-out;
+}
+
+.todoSection:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.sectionTitle {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    color: var(--gray-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sectionIcon {
+    font-size: var(--fs-xl);
+    color: var(--accent-color);
+    animation: bounce 1s;
+}
+
+.sectionCounter {
+    background: var(--accent-color);
+    color: white;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--br-full);
+    min-width: 2rem;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+.todoList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.todoItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--tertiary-color);
+    border-radius: var(--br-xl);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.5s ease-out;
+}
+
+.todoItem::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, var(--accent-color), #ff6b6b);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.todoItem:hover::before {
+    opacity: 1;
+}
+
+.todoItem:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--accent-color);
+}
+
+.todoItem.completed {
+    opacity: 0.8;
+    background: rgba(76, 175, 80, 0.1);
+    border-color: var(--success-color);
+}
+
+.todoItem.completed::before {
+    background: var(--success-color);
+    opacity: 1;
+}
+
+.todoCheckbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--accent-color);
+    border-radius: var(--br-md);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: all var(--transition-normal);
+    background: transparent;
+}
+
+.todoCheckbox:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.todoCheckbox.checked {
+    background: var(--success-color);
+    border-color: var(--success-color);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: default;
+    animation: bounce 0.5s;
+}
+
+.todoContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.todoText {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-medium);
+    color: var(--gray-color);
+    line-height: 1.5;
+    transition: all var(--transition-normal);
+}
+
+.todoItem.completed .todoText {
+    text-decoration: line-through;
+    color: var(--gray-medium);
+}
+
+.todoMeta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: var(--fs-sm);
+    color: var(--gray-medium);
+}
+
+.todoDateline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-normal);
+}
+
+.todoItem.completed .todoDateline {
+    opacity: 0.6;
+}
+
+.calendarIcon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--accent-color);
+}
+
+.todoItem.completed .calendarIcon {
+    color: var(--gray-medium);
+}
+
+.todoStatus {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.statusDot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent-color);
+    animation: pulse 2s infinite;
+}
+
+.todoItem.completed .statusDot {
+    background: var(--success-color);
+}
+
+.todoActions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.actionButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--br-lg);
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actionButton:hover {
+    background: rgba(108, 99, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.actionButton:active {
+    transform: scale(0.95);
+}
+
+.actionButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.trashIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--error-color);
+    transition: all var(--transition-normal);
+}
+
+.editIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--warning-color);
+    transition: all var(--transition-normal);
+}
+
+.markCompleteIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--success-color);
+    transition: all var(--transition-normal);
+}
+
+.todoItem.completed .actionButton {
+    opacity: 0.7;
+}
+
+.todoItem.completed .trashIcon {
+    color: var(--gray-medium);
+}
+
+.priorityBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--br-full);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.priorityBadge.high {
+    background: rgba(244, 67, 54, 0.2);
+    color: var(--error-color);
+}
+
+.priorityBadge.medium {
+    background: rgba(255, 152, 0, 0.2);
+    color: var(--warning-color);
+}
+
+.priorityBadge.low {
+    background: rgba(76, 175, 80, 0.2);
+    color: var(--success-color);
+}
+
+.emptySection {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--gray-medium);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--br-xl);
+    margin-top: 1rem;
+}
+
+.emptyIcon {
+    font-size: var(--fs-4xl);
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.emptyText {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-medium);
+    margin-bottom: 0.5rem;
+}
+
+.emptySubtext {
+    font-size: var(--fs-base);
+    opacity: 0.8;
+}
+
+/* Loading States */
+.todoItemSkeleton {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--tertiary-color);
+    border-radius: var(--br-xl);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    opacity: 0.6;
+    animation: pulse 1.5s infinite;
+}
+
+.skeletonCheckbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--border-color);
+    border-radius: var(--br-md);
+    flex-shrink: 0;
+}
+
+.skeletonContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.skeletonText {
+    height: 1.25rem;
+    background: var(--border-color);
+    border-radius: var(--br-sm);
+}
+
+.skeletonText.short {
+    width: 60%;
+}
+
+.skeletonText.long {
+    width: 90%;
+}
+
+.skeletonMeta {
+    height: 1rem;
+    background: var(--border-color);
+    border-radius: var(--br-sm);
+    width: 40%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .todoSection {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .sectionTitle {
+        font-size: var(--fs-xl);
+    }
+    
+    .todoItem {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .todoCheckbox {
+        align-self: flex-start;
+    }
+    
+    .todoContent {
+        width: 100%;
+    }
+    
+    .todoActions {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+    
+    .todoMeta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .todoSection {
+        padding: 1rem;
+    }
+    
+    .sectionHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .todoItem {
+        padding: 0.75rem;
+    }
+    
+    .todoText {
+        font-size: var(--fs-base);
+    }
+    
+    .todoActions {
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
